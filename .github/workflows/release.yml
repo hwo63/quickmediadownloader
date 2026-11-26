@@ -1,0 +1,107 @@
+name: Release QuickMedia Downloader
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - manifest.json
+      - .github/workflows/release.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: quickmediadownloader-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.repository == 'hwo63/quickmediadownloader' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Read version and check existing release
+        id: meta
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          version=$(python3 -c 'import json; print(json.load(open("manifest.json", encoding="utf-8"))["version"])')
+          version_name=$(python3 -c 'import json; m=json.load(open("manifest.json", encoding="utf-8")); print(m.get("version_name", m["version"]))')
+          tag="v${version}"
+
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Release $tag already exists."
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          {
+            printf 'version=%s\n' "$version"
+            printf 'version_name=%s\n' "$version_name"
+            printf 'tag=%s\n' "$tag"
+            printf 'publish=true\n'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Validate scripts and package release archive
+        if: steps.meta.outputs.publish == 'true'
+        shell: bash
+        env:
+          VERSION: ${{ steps.meta.outputs.version }}
+          VERSION_NAME: ${{ steps.meta.outputs.version_name }}
+        run: |
+          set -euo pipefail
+          python3 -m json.tool manifest.json >/dev/null
+          node --check content/content.js
+          node --check content/x-interceptor.js
+          node --check background/service-worker.js
+          node --check popup/popup.js
+
+          mkdir -p build_stage release_out
+          existing_zip=$(ls releases/QuickMediaDownloader-${VERSION}-*.zip 2>/dev/null | head -n 1 || true)
+          if [[ -n "$existing_zip" && -f "$existing_zip" ]]; then
+            cp "$existing_zip" release_out/
+            asset_path="release_out/$(basename "$existing_zip")"
+          else
+            cp manifest.json LICENSE build_stage/
+            cp -R background content popup icons build_stage/
+            asset_name="QuickMediaDownloader-${VERSION}.zip"
+            (cd build_stage && zip -qr "../release_out/${asset_name}" .)
+            asset_path="release_out/${asset_name}"
+          fi
+
+          {
+            printf '## QuickMedia Downloader %s\n\n' "$VERSION_NAME"
+            printf '### Cài đặt nhanh (không cần build)\n\n'
+            printf '1. Tải tệp `.zip` ở mục **Assets** bên dưới và giải nén.\n'
+            printf '2. Mở `chrome://extensions` (Chrome), `edge://extensions` (Edge) hoặc `brave://extensions` (Brave).\n'
+            printf '3. Bật **Developer mode** ➔ **Load unpacked** ➔ chọn thư mục vừa giải nén.\n'
+          } > release_out/Release.md
+
+          printf 'asset_path=%s\n' "$asset_path" >> "$GITHUB_OUTPUT"
+        id: pkg
+
+      - name: Publish GitHub Release
+        if: steps.meta.outputs.publish == 'true'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.meta.outputs.tag }}
+          VERSION_NAME: ${{ steps.meta.outputs.version_name }}
+          ASSET_PATH: ${{ steps.pkg.outputs.asset_path }}
+        run: |
+          set -euo pipefail
+          gh release create "$TAG" "$ASSET_PATH" \
+            --target "$GITHUB_SHA" \
+            --title "QuickMedia Downloader ${VERSION_NAME}" \
+            --notes-file release_out/Release.md \
+            --latest

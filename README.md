@@ -9,9 +9,8 @@
 </p>
 
 <p align="center">
-  <a href="releases">Tải bản Release dùng ngay</a> ·
+  <a href="https://github.com/hwo63/quickmediadownloader/releases/latest">Tải bản Release dùng ngay</a> ·
   <a href="#tính-năng-nổi-bật">Tính năng</a> ·
-  <a href="#quy-ước-phiên-bản">Quy ước phiên bản</a> ·
   <a href="#cài-đặt-nhanh-từ-bản-release-không-cần-build">Cài nhanh không cần build</a> ·
   <a href="#cách-build-và-nạp-vào-chrome--edge--brave">Build từ mã nguồn</a> ·
   <a href="LICENSE">Giấy phép MIT</a>
@@ -45,32 +44,11 @@ Khi bạn rê chuột vào bất kỳ hình ảnh hoặc thẻ `<video>` nào đ
 
 ---
 
-## Quy ước phiên bản
-
-Mỗi phiên bản được định nghĩa theo cấu trúc:
-
-```text
-<năm>.<bản update lớn>.<bản update nhỏ> (build <ngày tháng>.<giờ phút giây>)
-```
-
-Ví dụ: **`26.0.1 (build 2611.113500)`**
-
-| Thành phần | Ý nghĩa | Ví dụ |
-| --- | --- | --- |
-| `<năm>` | 2 chữ số cuối của năm phát hành | `26` (năm 2026) |
-| `<bản update lớn>` | Số thứ tự cập nhật tính năng lớn trong năm | `0` |
-| `<bản update nhỏ>` | Số thứ tự bản vá / tinh chỉnh nhỏ | `1` |
-| `build <ngày tháng>.<giờ phút giây>` | Thời điểm build theo định dạng `DDMM.HHMMSS` (GMT+7) | `2611.113500` (26/11 lúc 11:35:00) |
-
-> **Lưu ý kỹ thuật Manifest V3:** Chrome/Edge/Brave yêu cầu trường `"version"` trong [`manifest.json`](manifest.json) chỉ chứa tối đa 4 nhóm số phân tách bằng dấu chấm (ví dụ `"26.0.1"`), còn chuỗi hiển thị đầy đủ kèm thông tin build được lưu tại `"version_name"` (`"26.0.1 (build 2611.113500)"`). Extension sẽ hiển thị chuỗi `version_name` này trong trang quản lý tiện ích và ở cuối cửa sổ Popup.
-
----
-
 ## Cài đặt nhanh từ bản Release (không cần build)
 
 Nếu bạn muốn sử dụng ngay mà không cần chạy script build:
 
-1. Mở thư mục [`releases/`](releases/) trong repository này và tải file `.zip` mới nhất (ví dụ `QuickMediaDownloader-26.0.1-build-*.zip`).
+1. Mở trang [Releases](https://github.com/hwo63/quickmediadownloader/releases/latest) (hoặc thư mục [`releases/`](releases/)) và tải file `.zip` mới nhất.
 2. Giải nén file `.zip` thành một thư mục trên máy của bạn.
 3. Mở trang quản lý tiện ích của trình duyệt:
    - **Google Chrome:** `chrome://extensions`
@@ -99,15 +77,9 @@ Nếu bạn muốn sử dụng ngay mà không cần chạy script build:
    chmod +x scripts/build-release.sh
    ./scripts/build-release.sh
    ```
-   Script hỗ trợ các tùy chọn tăng phiên bản tự động theo quy ước `<năm>.<lớn>.<nhỏ>`:
-   - `./scripts/build-release.sh` — giữ số phiên bản hiện tại trong `manifest.json` và cập nhật dấu thời gian `build <DDMM>.<HHMMSS>` mới.
-   - `./scripts/build-release.sh --bump-minor` — tăng `<bản update nhỏ>` lên 1 (ví dụ `26.0.1` ➔ `26.0.2`).
-   - `./scripts/build-release.sh --bump-major` — tăng `<bản update lớn>` lên 1 và đặt bản nhỏ về `0` (ví dụ `26.0.1` ➔ `26.1.0`).
-   - `./scripts/build-release.sh 26.1.0` — chỉ định trực tiếp số phiên bản.
-
 3. Kết quả sau khi build:
    - Thư mục extension sạch sẵn sàng nạp trực tiếp: `dist/QuickMediaDownloader/`
-   - File nén phát hành sẵn sàng chia sẻ: `releases/QuickMediaDownloader-<version>-build-<DDMM>.<HHMMSS>.zip`
+   - File nén phát hành sẵn sàng chia sẻ: `releases/QuickMediaDownloader-*.zip`
 
 ### Nạp bản vừa build vào trình duyệt
 
@@ -132,7 +104,7 @@ Nếu bạn muốn sử dụng ngay mà không cần chạy script build:
 
 ```text
 .
-├── manifest.json             # Cấu hình Manifest V3, tên và version/version_name
+├── manifest.json             # Cấu hình Manifest V3 và khai báo extension
 ├── background/
 │   └── service-worker.js     # Xử lý chrome.downloads, đặt tên file, context menu & thống kê
 ├── content/
@@ -145,7 +117,7 @@ Nếu bạn muốn sử dụng ngay mà không cần chạy script build:
 │   └── popup.js              # Lưu cấu hình vào chrome.storage & đồng bộ các tab
 ├── icons/                    # Bộ icon 16/32/48/128 px
 ├── scripts/
-│   └── build-release.sh      # Script build, kiểm tra cú pháp, gắn build stamp & đóng gói ZIP
+│   └── build-release.sh      # Script kiểm tra cú pháp & đóng gói bản release ZIP
 ├── releases/                 # Chứa file .zip release dựng sẵn để dùng ngay
 ├── test-preview.html         # Trang HTML mẫu dùng kiểm tra hiển thị ảnh/video cục bộ
 ├── LICENSE                   # Giấy phép mã nguồn mở MIT
