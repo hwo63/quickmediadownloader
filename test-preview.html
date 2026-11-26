@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang Thử Nghiệm QuickMedia Downloader</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      margin: 0;
+      padding: 30px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+    .subtitle {
+      color: #64748b;
+      margin-bottom: 24px;
+    }
+    .info-box {
+      background: #e0f2fe;
+      border-left: 4px solid #0284c7;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      font-size: 14px;
+      color: #0369a1;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+    .card-content {
+      padding: 12px;
+    }
+    .card-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .card-desc {
+      font-size: 12px;
+      color: #64748b;
+    }
+    img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+    .small-icon {
+      width: 48px;
+      height: 48px;
+      margin: 12px;
+    }
+    video {
+      width: 100%;
+      border-radius: 8px;
+      background: #000;
+    }
+    .text-section {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Trang Thử Nghiệm QuickMedia Downloader</h1>
+    <p class="subtitle">Kiểm tra tính năng: Nút kính mờ siêu nhỏ, chỉ hiện chữ (độ phân giải/chất lượng), text xanh biển cho Ảnh, text xanh lá cho Video, chỉ xuất hiện khi hover chuột vào ảnh/video.</p>
+
+    <div class="info-box">
+      <strong>Đặc điểm thiết kế nút mới:</strong>
+      <ul style="margin: 6px 0 0 18px; padding: 0;">
+        <li><strong>Bỏ toàn bộ icon tải xuống:</strong> Chỉ để lại dòng chữ độ phân giải cực kỳ tinh gọn, không rườm rà.</li>
+        <li><strong>Phân biệt màu sắc trực quan:</strong>
+          <ul style="margin-top: 4px;">
+            <li><strong style="color: #0284c7;">Hình ảnh (Text màu xanh biển):</strong> Hiển thị kích thước thực tế của ảnh (ví dụ: <code>1920×1080</code>, <code>2560×1440</code>).</li>
+            <li><strong style="color: #16a34a;">Video (Text màu xanh lá):</strong> Hiển thị chất lượng ngắn gọn (ví dụ: <code>1080p</code>, <code>720p</code>, <code>4K</code>, <code>2K</code>,...) kèm dấu <code>▾</code> tùy chọn.</li>
+          </ul>
+        </li>
+        <li><strong>Kích hoạt theo thao tác Hover:</strong> Giữ trang web hoàn toàn sạch sẽ, không hiện nút tràn lan. Chỉ khi bạn rê chuột vào đúng ảnh hoặc video hợp lệ thì nút kính mờ mới êm ái xuất hiện ở góc dưới bên phải. Khi rê chuột ra ngoài, nút sẽ tự động ẩn đi.</li>
+        <li><strong>Chất liệu Kính lỏng (Liquid Glass):</strong> Kính mờ trong suốt nhìn thấy được hậu cảnh phía sau, viền bắt sáng tinh tế theo phong cách Apple.</li>
+      </ul>
+    </div>
+
+    <!-- Live Preview Showcase of the Minimalist Text-Only Badges -->
+    <div style="background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%); border-radius: 16px; padding: 22px; margin-bottom: 30px; color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+      <h3 style="margin: 0 0 16px 0; font-size: 15px; color: #38bdf8; display: flex; align-items: center; gap: 8px;">
+        <span>✨ Xem trước mẫu nút Kính mờ siêu nhỏ (Live Demo):</span>
+      </h3>
+      <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+        <!-- Demo Item 1: Image Badge (Blue Text: 1920x1080) -->
+        <div style="display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.04); padding: 10px 14px; border-radius: 9999px;">
+          <div style="display: inline-flex; align-items: center; padding: 3px 9px; min-height: 23px; border-radius: 9999px; background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.05) 45%, rgba(0,0,0,0.2) 100%), rgba(20,26,38,0.35); backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px); border: 1px solid rgba(255,255,255,0.38); border-top-color: rgba(255,255,255,0.75); box-shadow: inset 0 1px 1px 0 rgba(255,255,255,0.65), 0 6px 20px -2px rgba(0,0,0,0.35); color: #38bdf8; font-size: 11px; font-weight: 700; letter-spacing: -0.1px;">
+            1920×1080
+          </div>
+          <span style="font-size: 13px; color: #94a3b8;">Ảnh (Text Xanh biển)</span>
+        </div>
+
+        <!-- Demo Item 2: Video Badge (Green Text: 1080p) -->
+        <div style="display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.04); padding: 10px 14px; border-radius: 9999px;">
+          <div style="display: inline-flex; align-items: center; gap: 2px; padding: 3px 9px; min-height: 23px; border-radius: 9999px; background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.05) 45%, rgba(0,0,0,0.2) 100%), rgba(20,26,38,0.35); backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px); border: 1px solid rgba(255,255,255,0.38); border-top-color: rgba(255,255,255,0.75); box-shadow: inset 0 1px 1px 0 rgba(255,255,255,0.65), 0 6px 20px -2px rgba(0,0,0,0.35); color: #22c55e; font-size: 11px; font-weight: 700; letter-spacing: -0.1px;">
+            <span>1080p</span>
+            <span style="font-size: 8px; opacity: 0.7; margin-left: 1px;">▾</span>
+          </div>
+          <span style="font-size: 13px; color: #94a3b8;">Video (Text Xanh lá + ▾)</span>
+        </div>
+
+        <!-- Demo Item 3: Video Badge 4K (Green Text: 4K) -->
+        <div style="display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.04); padding: 10px 14px; border-radius: 9999px;">
+          <div style="display: inline-flex; align-items: center; gap: 2px; padding: 3px 9px; min-height: 23px; border-radius: 9999px; background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.05) 45%, rgba(0,0,0,0.2) 100%), rgba(20,26,38,0.35); backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px); border: 1px solid rgba(255,255,255,0.38); border-top-color: rgba(255,255,255,0.75); box-shadow: inset 0 1px 1px 0 rgba(255,255,255,0.65), 0 6px 20px -2px rgba(0,0,0,0.35); color: #22c55e; font-size: 11px; font-weight: 700; letter-spacing: -0.1px;">
+            <span>4K</span>
+            <span style="font-size: 8px; opacity: 0.7; margin-left: 1px;">▾</span>
+          </div>
+          <span style="font-size: 13px; color: #94a3b8;">Video 4K (Text Xanh lá)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 1: Normal Text (should NOT show any buttons) -->
+    <h2>1. Khu vực Văn bản (Không bao giờ hiện nút)</h2>
+    <div class="text-section">
+      <p>Khi bạn di chuyển chuột khắp khu vực này, các tiêu đề, thẻ div hoặc liên kết xung quanh, tiện ích hoàn toàn giữ trang sạch sẽ, không hiện nút tải bừa bãi khắp mọi nơi.</p>
+      <p>Tiện ích chỉ kích hoạt khi con trỏ chuột chạm vào vùng giới hạn chính xác của một thẻ hình ảnh hoặc video đáp ứng kích thước tối thiểu.</p>
+    </div>
+
+    <!-- Section 2: Images -->
+    <h2>2. Hình ảnh (Chỉ hiện khi trỏ chuột vào đúng ảnh)</h2>
+    <div class="grid">
+      <!-- Image 1 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1000&q=80" alt="Landscape">
+        <div class="card-content">
+          <div class="card-title">Ảnh 1: Thiên nhiên</div>
+          <div class="card-desc">Chỉ tải bức ảnh này khi rê chuột vào đây</div>
+        </div>
+      </div>
+
+      <!-- Image 2 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1000&q=80" alt="Technology">
+        <div class="card-content">
+          <div class="card-title">Ảnh 2: Công nghệ</div>
+          <div class="card-desc">Chỉ tải bức ảnh này khi rê chuột vào đây</div>
+        </div>
+      </div>
+
+      <!-- Image 3 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1000&q=80" alt="Ocean">
+        <div class="card-content">
+          <div class="card-title">Ảnh 3: Đại dương</div>
+          <div class="card-desc">Chỉ tải bức ảnh này khi rê chuột vào đây</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Video -->
+    <h2>3. Thẻ Video HTML5 (Chỉ hiện khi trỏ vào video)</h2>
+    <div style="margin-bottom: 30px;">
+      <video controls poster="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=1200&q=80">
+        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+        Trình duyệt không hỗ trợ video.
+      </video>
+    </div>
+
+    <!-- Section 4: Small Icon Filter -->
+    <h2>4. Lọc Icon & Avatar nhỏ (Không hiện nút)</h2>
+    <div style="display: flex; gap: 16px; align-items: center; background: #fff; padding: 16px; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 30px;">
+      <img class="small-icon" src="icons/icon-48.png" alt="Icon 48">
+      <div>
+        <strong>Icon 48x48:</strong> Không hiện nút tải vì kích thước nhỏ hơn ngưỡng cài đặt (mặc định 120px).
+      </div>
+    </div>
+
+    <!-- Section 5: Modal / Lightbox Full View Test (NEW - Check Occlusion) -->
+    <h2>5. Thử nghiệm Popup Xem Ảnh Full (Kiểm tra ẩn nút bị che khuất)</h2>
+    <div style="background: #fff; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 30px;">
+      <p style="margin-top: 0;">Nhấp vào nút dưới đây hoặc nhấp vào ảnh để mở <strong>Popup Xem Ảnh Đầy Đủ (Modal Lightbox)</strong>. Khi popup mở:</p>
+      <ul style="margin: 6px 0 16px 20px;">
+        <li>✅ Toàn bộ các ảnh ở trang nền phía sau popup sẽ <strong>TỰ ĐỘNG ẨN NÚT TẢI</strong> (không bị nổi lềnh bềnh trên popup).</li>
+        <li>✅ Chỉ duy nhất bức ảnh lớn đang xem trong Popup mới hiển thị nút tải.</li>
+        <li>✅ Khi đóng Popup (bấm nút × hoặc phím Escape hoặc bấm nền tối), các nút tải ở trang nền sẽ tự động hiện lại.</li>
+      </ul>
+
+      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+        <button id="openModalBtn" style="padding: 10px 18px; background: #0284c7; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; box-shadow: 0 2px 6px rgba(2,132,199,0.3);">
+          🔍 Mở Popup Xem Ảnh Full (Lightbox)
+        </button>
+        <span style="font-size: 13px; color: #64748b;">(Hoặc nhấp vào bất kỳ ảnh nào trong Section 2)</span>
+      </div>
+    </div>
+
+    <!-- Fullscreen Modal Dialog -->
+    <div id="fullImageModal" role="dialog" aria-modal="true" style="display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 999999; align-items: center; justify-content: center; padding: 24px;">
+      <div style="position: relative; max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; align-items: center;">
+        <button id="closeModalBtn" style="position: absolute; top: -45px; right: 0; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); color: #fff; font-size: 20px; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px);">
+          ✕
+        </button>
+        <img id="modalFullImg" src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1600&q=85" alt="Full Nature View" style="max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.7); display: block;">
+        <div style="color: #cbd5e1; font-size: 14px; margin-top: 12px; text-align: center;">
+          Ảnh toàn màn hình (Modal Lightbox) — Nút tải chỉ hiện trên ảnh này, nền phía sau bị ẩn hoàn toàn nút!
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 6: Carousel / Slider Test (Overflow Hidden) -->
+    <h2>6. Thử nghiệm Slider / Carousel (Chỉ hiện nút trên slide đang xem)</h2>
+    <div style="background: #fff; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 30px;">
+      <p style="margin-top: 0;">Các slide bị tràn ra ngoài vùng <code>overflow: hidden</code> sẽ <strong>KHÔNG</strong> hiện nút tải:</p>
+      <div style="position: relative; width: 360px; height: 220px; overflow: hidden; border-radius: 12px; border: 2px solid #cbd5e1;">
+        <div id="carouselTrack" style="display: flex; width: 1080px; transition: transform 0.3s ease;">
+          <div style="width: 360px; height: 220px; flex-shrink: 0;">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80" alt="Slide 1" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="width: 360px; height: 220px; flex-shrink: 0;">
+            <img src="https://images.unsplash.com/photo-1511497584788-87676104235f?w=800&q=80" alt="Slide 2" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="width: 360px; height: 220px; flex-shrink: 0;">
+            <img src="https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?w=800&q=80" alt="Slide 3" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px; display: flex; gap: 8px;">
+        <button onclick="setSlide(0)" style="padding: 6px 12px; border-radius: 6px; border: 1px solid #cbd5e1; background: #f8fafc; cursor: pointer; font-size: 13px;">Slide 1 (Đang hiện)</button>
+        <button onclick="setSlide(1)" style="padding: 6px 12px; border-radius: 6px; border: 1px solid #cbd5e1; background: #f8fafc; cursor: pointer; font-size: 13px;">Slide 2</button>
+        <button onclick="setSlide(2)" style="padding: 6px 12px; border-radius: 6px; border: 1px solid #cbd5e1; background: #f8fafc; cursor: pointer; font-size: 13px;">Slide 3</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Modal Lightbox Controller
+    const modal = document.getElementById('fullImageModal');
+    const openBtn = document.getElementById('openModalBtn');
+    const closeBtn = document.getElementById('closeModalBtn');
+
+    function openModal() {
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    if (openBtn) openBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+    // Also close on backdrop click
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    // Close on Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+        closeModal();
+      }
+    });
+
+    // Make Section 2 cards open modal on click
+    document.querySelectorAll('.grid .card img').forEach(img => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', () => {
+        const modalImg = document.getElementById('modalFullImg');
+        if (modalImg) modalImg.src = img.src;
+        openModal();
+      });
+    });
+
+    // Carousel Controller
+    function setSlide(index) {
+      const track = document.getElementById('carouselTrack');
+      if (track) {
+        track.style.transform = `translateX(-${index * 360}px)`;
+      }
+    }
+  </script>
+</body>
+</html>

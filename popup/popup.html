@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickMedia Downloader - Tải Nhanh Ảnh & Video trên mọi hình ảnh/video của trang web</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo-group">
+        <img src="../icons/icon-32.png" alt="Logo" class="logo-img">
+        <div>
+          <h1 class="title">QuickMedia Downloader</h1>
+          <p class="subtitle">Tải Nhanh Ảnh & Video trên mọi trang web</p>
+        </div>
+      </div>
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        <span>Bật</span>
+      </div>
+    </header>
+
+    <!-- Stats summary -->
+    <div class="stats-card">
+      <div class="stat-item">
+        <span class="stat-value" id="stat-total">0</span>
+        <span class="stat-label">Tổng số</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-value" id="stat-images">0</span>
+        <span class="stat-label">Hình ảnh</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-value" id="stat-videos">0</span>
+        <span class="stat-label">Video</span>
+      </div>
+    </div>
+
+    <!-- Settings Controls -->
+    <div class="section-title">Cài đặt hiển thị</div>
+
+    <div class="settings-group">
+      <!-- Enable Images -->
+      <label class="control-row">
+        <div class="control-text">
+          <span class="label-name">Nút Liquid Glass tải Hình ảnh</span>
+          <span class="label-desc">Hiện nút kính mờ kèm kích thước khi rê chuột vào ảnh lớn</span>
+        </div>
+        <div class="toggle-switch">
+          <input type="checkbox" id="enableImages" checked>
+          <span class="slider"></span>
+        </div>
+      </label>
+
+      <!-- Min Image Size -->
+      <div class="control-row sub-row" id="min-size-wrapper">
+        <div class="control-text">
+          <span class="label-name">Kích thước ảnh tối thiểu</span>
+          <span class="label-desc">Lọc bỏ các icon, avatar nhỏ</span>
+        </div>
+        <select id="minImageSize" class="select-box">
+          <option value="80">80 × 80 px</option>
+          <option value="120" selected>120 × 120 px (Chuẩn)</option>
+          <option value="180">180 × 180 px</option>
+          <option value="250">250 × 250 px (Ảnh lớn)</option>
+        </select>
+      </div>
+
+      <!-- Enable Videos -->
+      <label class="control-row">
+        <div class="control-text">
+          <span class="label-name">Nút Liquid Glass tải Video</span>
+          <span class="label-desc">Hiện nút kính mờ kèm độ phân giải (1080p, 4K) trên video</span>
+        </div>
+        <div class="toggle-switch">
+          <input type="checkbox" id="enableVideos" checked>
+          <span class="slider"></span>
+        </div>
+      </label>
+
+      <!-- Position -->
+      <div class="control-row">
+        <div class="control-text">
+          <span class="label-name">Vị trí nút tải</span>
+          <span class="label-desc">Góc hiển thị trên media</span>
+        </div>
+        <select id="buttonPosition" class="select-box">
+          <option value="bottom-right" selected>Góc dưới phải (Mặc định)</option>
+          <option value="top-right">Góc trên phải</option>
+          <option value="bottom-left">Góc dưới trái</option>
+          <option value="top-left">Góc trên trái</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="section-title">Tùy chọn tải xuống</div>
+
+    <div class="settings-group">
+      <!-- Save As -->
+      <label class="control-row">
+        <div class="control-text">
+          <span class="label-name">Hỏi vị trí lưu file</span>
+          <span class="label-desc">Hiện hộp thoại chọn thư mục lưu</span>
+        </div>
+        <div class="toggle-switch">
+          <input type="checkbox" id="saveAs">
+          <span class="slider"></span>
+        </div>
+      </label>
+
+      <!-- Show Toast -->
+      <label class="control-row">
+        <div class="control-text">
+          <span class="label-name">Thông báo khi tải</span>
+          <span class="label-desc">Hiện thông báo nhỏ trên góc màn hình</span>
+        </div>
+        <div class="toggle-switch">
+          <input type="checkbox" id="showNotification" checked>
+          <span class="slider"></span>
+        </div>
+      </label>
+    </div>
+
+    <!-- Footer actions -->
+    <div class="footer-actions">
+      <button type="button" class="action-btn" id="open-downloads">
+        <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Mở mục Tải xuống
+      </button>
+    </div>
+
+    <div class="footer-note">
+      Nhấn chuột phải vào bất kỳ ảnh/video để tải nhanh
+    </div>
+    <div class="footer-version" id="ext-version"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

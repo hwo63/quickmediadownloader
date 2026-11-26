@@ -1,0 +1,11 @@
+/* QuickMedia Downloader - Injected Host Styles */
+#qm-downloader-host {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  overflow: visible;
+  z-index: 2147483647; /* Maximum possible 32-bit signed int z-index */
+  pointer-events: none;
+}
