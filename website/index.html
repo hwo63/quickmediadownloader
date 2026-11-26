@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>QuickMedia Downloader — Tải Nhanh Ảnh &amp; Video trên mọi trang web</title>
+  <meta name="description" content="Extension mã nguồn mở cho Chrome, Edge và Brave — tự động gắn nút kính mờ Liquid Glass khi rê chuột để tải ảnh gốc và video độ nét cao chỉ với 1 click.">
+  <link rel="canonical" href="https://quickmediadownloader.hwo.workers.dev/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="QuickMedia Downloader — Tải Nhanh Ảnh &amp; Video">
+  <meta property="og:description" content="Một chạm Liquid Glass để lưu ảnh gốc và video độ nét cao ngay trên mọi trang web. Nhẹ, riêng tư, mã nguồn mở MIT.">
+  <meta property="og:url" content="https://quickmediadownloader.hwo.workers.dev/">
+  <meta property="og:image" content="https://quickmediadownloader.hwo.workers.dev/assets/icon-128.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="assets/icon-128.png">
+  <link rel="apple-touch-icon" href="assets/icon-128.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link visually-hidden">Bỏ qua điều hướng, đến nội dung chính</a>
+
+  <header class="site-header">
+    <div class="nav-shell">
+      <a href="#top" class="brand-link">
+        <img src="assets/icon-32.png" alt="" width="24" height="24" class="brand-icon">
+        <span class="brand-name">QuickMedia Downloader</span>
+      </a>
+      <nav aria-label="Điều hướng chính" class="primary-nav">
+        <ul class="nav-list">
+          <li><a href="#experience">Trải nghiệm</a></li>
+          <li><a href="#features">Tính năng</a></li>
+          <li><a href="#install">Cài đặt</a></li>
+          <li><a href="https://github.com/hwo63/quickmediadownloader" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
+      </nav>
+      <a href="https://github.com/hwo63/quickmediadownloader/releases/latest" target="_blank" rel="noopener noreferrer" class="nav-cta">
+        Tải v26.0.1
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <!-- Hero -->
+    <section id="top" class="hero-section">
+      <div class="hero-inner">
+        <p class="hero-eyebrow">Mã nguồn mở MIT · Chrome · Edge · Brave</p>
+        <img
+          src="assets/icon-128.png"
+          alt="Biểu tượng QuickMedia Downloader"
+          width="88"
+          height="88"
+          fetchpriority="high"
+          class="hero-app-icon"
+        >
+        <h1 class="hero-title">Tải Nhanh Ảnh &amp; Video.<br>Ngay tại nơi bạn xem.</h1>
+        <p class="hero-subtitle">
+          Một chạm Liquid Glass tinh giản xuất hiện đúng lúc bạn rê chuột — lưu ảnh phân giải gốc và video độ nét cao trên mọi trang web, hoàn toàn riêng tư trên trình duyệt.
+        </p>
+        <div class="hero-actions">
+          <a href="https://github.com/hwo63/quickmediadownloader/releases/latest" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            Tải bản Release v26.0.1
+          </a>
+          <a href="#experience" class="btn-secondary">
+            Thử tương tác trực tiếp
+          </a>
+        </div>
+      </div>
+
+      <!-- Apple-style Interactive Product Showcase -->
+      <div id="experience" class="showcase-shell">
+        <div class="browser-window" aria-label="Bản mô phỏng tương tác nút Liquid Glass">
+          <div class="browser-chrome">
+            <div class="traffic-lights" aria-hidden="true">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <div class="address-pill">
+              <span class="lock-icon" aria-hidden="true">🔒</span>
+              <span>quickmediadownloader.hwo.workers.dev</span>
+            </div>
+            <div class="toolbar-badge">
+              <img src="assets/icon-32.png" alt="" width="16" height="16">
+              <span>Bật</span>
+            </div>
+          </div>
+
+          <div class="showcase-stage">
+            <p class="stage-hint">Rê chuột (hoặc chạm) vào thẻ Ảnh và Video bên dưới để xem nút kính mờ xuất hiện và bấm thử:</p>
+            <div class="demo-grid">
+              <!-- Image Demo Card -->
+              <article class="demo-card demo-image-card" tabindex="0">
+                <div class="media-surface media-photo-art" role="img" aria-label="Ảnh phong cảnh độ phân giải 1920 nhân 1080">
+                  <div class="photo-glow" aria-hidden="true"></div>
+                  <div class="photo-horizon" aria-hidden="true"></div>
+                  <span class="media-kind-chip">Ảnh gốc · JPG</span>
+                  <button
+                    type="button"
+                    class="qm-demo-pill qm-demo-blue"
+                    data-demo-download="image"
+                    aria-label="Mô phỏng tải ảnh 1920 nhân 1080"
+                  >
+                    1920×1080
+                  </button>
+                </div>
+                <div class="demo-meta">
+                  <h3>Nhãn Ảnh Xanh Dương</h3>
+                  <p>Hiển thị chính xác kích thước thực tế, ưu tiên trích xuất bản gốc từ <code>srcset</code>, <code>data-original</code> và <code>name=orig</code>.</p>
+                </div>
+              </article>
+
+              <!-- Video Demo Card -->
+              <article class="demo-card demo-video-card" tabindex="0">
+                <div class="media-surface media-video-art" role="img" aria-label="Trình phát video độ nét 1080p">
+                  <div class="video-waves" aria-hidden="true"></div>
+                  <div class="video-play-ring" aria-hidden="true">▶</div>
+                  <span class="media-kind-chip">X / HTML5 Video · MP4</span>
+                  <div class="qm-demo-video-group">
+                    <button
+                      type="button"
+                      class="qm-demo-pill qm-demo-green"
+                      data-demo-download="video"
+                      aria-label="Mô phỏng tải video 1080p MP4"
+                    >
+                      <span>1080p</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="qm-demo-chevron"
+                      id="demo-quality-toggle"
+                      aria-expanded="false"
+                      aria-haspopup="true"
+                      aria-label="Chọn chất lượng video mô phỏng"
+                    >
+                      ▾
+                    </button>
+                    <div class="qm-demo-menu" id="demo-quality-menu" hidden>
+                      <button type="button" class="qm-menu-opt" data-quality="1080p">⚡ 1080p (MP4)</button>
+                      <button type="button" class="qm-menu-opt" data-quality="720p">⚡ 720p (MP4)</button>
+                      <button type="button" class="qm-menu-opt" data-quality="Poster">🖼️ Tải ảnh bìa (Poster)</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="demo-meta">
+                  <h3>Nhãn Video Xanh Lá</h3>
+                  <p>Lấy link MP4 khi bạn rê chuột vào trình phát — vượt lớp phủ điều khiển và tránh thông báo chờ bấm lại.</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="demo-toast-area" aria-live="polite" aria-atomic="true">
+              <p id="demo-status-toast" class="demo-status-pill" hidden></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bento Grid Features -->
+    <section id="features" class="section-block">
+      <div class="section-header reveal-item">
+        <p class="section-eyebrow">Thiết kế cho tốc độ &amp; sự tinh gọn</p>
+        <h2 class="section-title">Mạnh mẽ bên trong.<br>Trong suốt bên ngoài.</h2>
+      </div>
+
+      <div class="bento-grid">
+        <article class="bento-card bento-wide reveal-item">
+          <div class="bento-badge">Hiệu năng thông minh</div>
+          <h3>Chỉ lấy link tải khi bạn hover.</h3>
+          <p>Không quét trước hàng trăm đường dẫn gây nặng trang web. Ngay khoảnh khắc con trỏ chạm vào ảnh hoặc video, QuickMedia mới trích xuất liên kết gốc để sẵn sàng tải ngay khi bạn bấm.</p>
+        </article>
+
+        <article class="bento-card reveal-item">
+          <div class="bento-badge">Liquid Glass</div>
+          <h3>Kính mờ Shadow DOM.</h3>
+          <p>Dựng hoàn toàn trong Shadow DOM cách ly CSS tuyệt đối, tự động thích ứng sáng tối theo giao diện hệ thống của bạn.</p>
+        </article>
+
+        <article class="bento-card reveal-item">
+          <div class="bento-badge">X / Twitter</div>
+          <h3>MP4 gốc, không lỗi blob.</h3>
+          <p>Kết hợp bắt gói tin GraphQL và đọc React Fiber để lấy trực tiếp MP4 chất lượng cao từ CDN thay vì luồng blob tạm.</p>
+        </article>
+
+        <article class="bento-card reveal-item">
+          <div class="bento-badge">Mọi website</div>
+          <h3>Vượt lớp phủ Player.</h3>
+          <p>Nhận diện thẻ <code>&lt;video&gt;</code> ngay cả dưới lớp điều khiển của Video.js, Plyr, JWPlayer và tự ẩn khi bị popup che khuất.</p>
+        </article>
+
+        <article class="bento-card bento-wide reveal-item">
+          <div class="bento-badge">Quyền riêng tư</div>
+          <h3>100% cục bộ. Không theo dõi.</h3>
+          <p>Không máy chủ trung gian, không phân tích hành vi. Tiện ích chỉ sử dụng đúng 3 quyền cần thiết của trình duyệt: <code>downloads</code>, <code>storage</code> và <code>contextMenus</code>.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Install Tabs Section -->
+    <section id="install" class="section-block install-section">
+      <div class="section-header reveal-item">
+        <p class="section-eyebrow">Sẵn sàng trong 30 giây</p>
+        <h2 class="section-title">Cài đặt theo cách của bạn.</h2>
+        <p class="section-lead">Tải trực tiếp bản đóng gói sẵn hoặc tự build từ mã nguồn mở cho Chrome, Edge và Brave.</p>
+      </div>
+
+      <div class="tabs-card reveal-item">
+        <div class="tablist" role="tablist" aria-label="Phương thức cài đặt trình duyệt">
+          <button type="button" role="tab" id="tab-release" aria-selected="true" class="tab-btn">Bản Release (Nhanh nhất)</button>
+          <button type="button" role="tab" id="tab-chrome" aria-selected="false" tabindex="-1" class="tab-btn">Google Chrome</button>
+          <button type="button" role="tab" id="tab-edge" aria-selected="false" tabindex="-1" class="tab-btn">Microsoft Edge</button>
+          <button type="button" role="tab" id="tab-brave" aria-selected="false" tabindex="-1" class="tab-btn">Brave Browser</button>
+          <button type="button" role="tab" id="tab-build" aria-selected="false" tabindex="-1" class="tab-btn">Build từ mã nguồn</button>
+        </div>
+
+        <div class="tab-panels">
+          <div role="tabpanel" id="panel-release" aria-labelledby="tab-release" tabindex="0">
+            <div class="tab-panel-inner">
+              <h3>Cài đặt ngay từ bản Release đóng gói sẵn (không cần build)</h3>
+              <ol class="step-list">
+                <li>Truy cập <a href="https://github.com/hwo63/quickmediadownloader/releases/latest" target="_blank" rel="noopener noreferrer">trang GitHub Releases</a> và tải tệp <code>QuickMediaDownloader-*.zip</code> mới nhất.</li>
+                <li>Giải nén tệp <code>.zip</code> vào một thư mục cố định trên máy tính của bạn.</li>
+                <li>Mở trang tiện ích của trình duyệt (<code>chrome://extensions</code>, <code>edge://extensions</code> hoặc <code>brave://extensions</code>).</li>
+                <li>Bật công tắc <strong>Developer mode</strong> ➔ bấm <strong>Load unpacked</strong> ➔ chọn thư mục vừa giải nén.</li>
+              </ol>
+            </div>
+          </div>
+
+          <div role="tabpanel" id="panel-chrome" aria-labelledby="tab-chrome" hidden="until-found">
+            <div class="tab-panel-inner">
+              <h3>Nạp vào Google Chrome</h3>
+              <ol class="step-list">
+                <li>Mở thanh địa chỉ Chrome và nhập <code>chrome://extensions</code> rồi nhấn Enter.</li>
+                <li>Bật <strong>Developer mode</strong> (Chế độ dành cho nhà phát triển) ở góc trên bên phải.</li>
+                <li>Bấm <strong>Load unpacked</strong> (Tải tiện ích đã giải nén) và chọn thư mục <code>dist/QuickMediaDownloader</code> (hoặc thư mục giải nén từ bản Release).</li>
+                <li>Ghim biểu tượng <strong>QuickMedia Downloader</strong> lên thanh công cụ để bật/tắt nhanh và xem thống kê.</li>
+              </ol>
+            </div>
+          </div>
+
+          <div role="tabpanel" id="panel-edge" aria-labelledby="tab-edge" hidden="until-found">
+            <div class="tab-panel-inner">
+              <h3>Nạp vào Microsoft Edge</h3>
+              <ol class="step-list">
+                <li>Mở thanh địa chỉ Edge và nhập <code>edge://extensions</code> rồi nhấn Enter.</li>
+                <li>Bật công tắc <strong>Developer mode</strong> ở cột bên trái màn hình.</li>
+                <li>Bấm <strong>Load unpacked</strong> và chọn thư mục <code>dist/QuickMediaDownloader</code> (hoặc thư mục giải nén từ bản Release).</li>
+              </ol>
+            </div>
+          </div>
+
+          <div role="tabpanel" id="panel-brave" aria-labelledby="tab-brave" hidden="until-found">
+            <div class="tab-panel-inner">
+              <h3>Nạp vào Brave Browser</h3>
+              <ol class="step-list">
+                <li>Mở thanh địa chỉ Brave và nhập <code>brave://extensions</code> rồi nhấn Enter.</li>
+                <li>Bật công tắc <strong>Developer mode</strong> ở góc trên bên phải.</li>
+                <li>Bấm <strong>Load unpacked</strong> và trỏ vào thư mục <code>dist/QuickMediaDownloader</code> (hoặc thư mục giải nén từ bản Release).</li>
+              </ol>
+            </div>
+          </div>
+
+          <div role="tabpanel" id="panel-build" aria-labelledby="tab-build" hidden="until-found">
+            <div class="tab-panel-inner">
+              <h3>Build và đóng gói từ mã nguồn mở</h3>
+              <p class="panel-desc">Yêu cầu <code>zsh</code>, <code>python3</code> và <code>zip</code> trên macOS hoặc Linux:</p>
+              <div class="code-box">
+                <pre role="region" aria-label="Lệnh clone và build extension" tabindex="0"><code id="build-commands">git clone https://github.com/hwo63/quickmediadownloader.git
+cd quickmediadownloader
+chmod +x scripts/build-release.sh
+./scripts/build-release.sh</code></pre>
+                <button type="button" id="copy-build-btn" class="copy-btn">Sao chép lệnh</button>
+              </div>
+              <p class="panel-note">Sau khi chạy xong, thư mục nạp trực tiếp nằm tại <code>dist/QuickMediaDownloader/</code> và gói nén sẵn sàng chia sẻ nằm trong <code>releases/</code>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Open Source Banner -->
+    <section class="oss-banner reveal-item">
+      <div class="oss-inner">
+        <p class="oss-kicker">Open Source · Giấy phép MIT</p>
+        <h2>Minh bạch từng dòng mã.</h2>
+        <p>
+          Toàn bộ mã nguồn được chia sẻ theo giấy phép MIT — bạn có thể tự kiểm tra, tùy biến giao diện Liquid Glass hoặc đóng góp cải tiến trực tiếp trên GitHub.
+        </p>
+        <div class="hero-actions">
+          <a href="https://github.com/hwo63/quickmediadownloader" target="_blank" rel="noopener noreferrer" class="btn-light">
+            Mở kho lưu trữ GitHub
+          </a>
+          <a href="https://github.com/hwo63/quickmediadownloader/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="btn-ghost-light">
+            Đọc giấy phép MIT
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <p>Copyright © 2026 HWO. Phát hành theo giấy phép MIT.</p>
+      <ul class="footer-links">
+        <li><a href="https://quickmediadownloader.hwo.workers.dev/">Trang chủ</a></li>
+        <li><a href="https://github.com/hwo63/quickmediadownloader">GitHub</a></li>
+        <li><a href="https://github.com/hwo63/quickmediadownloader/releases/latest">Releases</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

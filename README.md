@@ -9,6 +9,7 @@
 </p>
 
 <p align="center">
+  <a href="https://quickmediadownloader.hwo.workers.dev/">Trang giới thiệu</a> ·
   <a href="https://github.com/hwo63/quickmediadownloader/releases/latest">Tải bản Release dùng ngay</a> ·
   <a href="#tính-năng-nổi-bật">Tính năng</a> ·
   <a href="#cài-đặt-nhanh-từ-bản-release-không-cần-build">Cài nhanh không cần build</a> ·
@@ -119,6 +120,7 @@ Nếu bạn muốn sử dụng ngay mà không cần chạy script build:
 ├── scripts/
 │   └── build-release.sh      # Script kiểm tra cú pháp & đóng gói bản release ZIP
 ├── releases/                 # Chứa file .zip release dựng sẵn để dùng ngay
+├── website/                  # Trang web giới thiệu tĩnh (sẵn sàng deploy lên Cloudflare Pages)
 ├── test-preview.html         # Trang HTML mẫu dùng kiểm tra hiển thị ảnh/video cục bộ
 ├── LICENSE                   # Giấy phép mã nguồn mở MIT
 └── README.md
