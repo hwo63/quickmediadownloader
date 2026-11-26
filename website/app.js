@@ -1,6 +1,68 @@
 (() => {
   'use strict';
 
+  // 0. Adaptive Navbar (collapses to native popover only when links overflow)
+  const header = document.getElementById('site-header');
+  const navShell = document.getElementById('nav-shell');
+  const siteMenu = document.getElementById('site-menu');
+
+  if (header && navShell && siteMenu) {
+    let lastHeaderWidth = 0;
+
+    const updateNavLayout = () => {
+      const currentWidth = navShell.getBoundingClientRect().width;
+      const isCurrentlyWide = header.classList.contains('is-wide');
+      if (!isCurrentlyWide && currentWidth <= lastHeaderWidth && lastHeaderWidth !== 0) {
+        return;
+      }
+      lastHeaderWidth = currentWidth;
+
+      let wasOpen = false;
+      if (!isCurrentlyWide) {
+        try {
+          wasOpen = siteMenu.matches(':popover-open') || siteMenu.classList.contains(':popover-open');
+        } catch {
+          wasOpen = siteMenu.classList.contains(':popover-open');
+        }
+      }
+      header.classList.add('is-measuring');
+      header.classList.add('is-wide');
+      siteMenu.removeAttribute('popover');
+
+      const fitsInline = navShell.scrollWidth <= navShell.clientWidth;
+
+      if (!fitsInline) {
+        header.classList.remove('is-wide');
+        siteMenu.setAttribute('popover', 'auto');
+        if (wasOpen && typeof siteMenu.showPopover === 'function') {
+          siteMenu.showPopover();
+        }
+      }
+
+      requestAnimationFrame(() => {
+        header.classList.remove('is-measuring');
+      });
+    };
+
+    const navObserver = new ResizeObserver(() => updateNavLayout());
+    navObserver.observe(navShell);
+    navObserver.observe(siteMenu);
+    updateNavLayout();
+
+    // Close collapsed popover when tapping an in-page link
+    siteMenu.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (!header.classList.contains('is-wide') && typeof siteMenu.hidePopover === 'function') {
+          try {
+            siteMenu.hidePopover();
+          } catch {
+            // Ignore when already closed
+          }
+        }
+      });
+    });
+  }
+
   // 1. Accessible Tabs with arrow-key navigation & beforematch support
   const tablist = document.querySelector('[role="tablist"]');
   if (tablist) {

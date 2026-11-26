@@ -20,20 +20,36 @@
 <body>
   <a href="#main-content" class="skip-link visually-hidden">Bỏ qua điều hướng, đến nội dung chính</a>
 
-  <header class="site-header">
-    <div class="nav-shell">
+  <header class="site-header" id="site-header">
+    <div class="nav-shell" id="nav-shell">
       <a href="#top" class="brand-link">
         <img src="assets/icon-32.png" alt="" width="24" height="24" class="brand-icon">
         <span class="brand-name">QuickMedia Downloader</span>
       </a>
-      <nav aria-label="Điều hướng chính" class="primary-nav">
-        <ul class="nav-list">
+
+      <nav aria-label="Điều hướng chính" class="site-nav">
+        <button
+          class="menu-button"
+          id="menu-button"
+          type="button"
+          popovertarget="site-menu"
+          popovertargetaction="toggle"
+          aria-controls="site-menu"
+        >
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M2 4.25h12M2 8h12M2 11.75h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+          <span>Menu</span>
+        </button>
+
+        <ul id="site-menu" class="site-menu" popover="auto">
           <li><a href="#experience">Trải nghiệm</a></li>
           <li><a href="#features">Tính năng</a></li>
           <li><a href="#install">Cài đặt</a></li>
           <li><a href="https://github.com/hwo63/quickmediadownloader" target="_blank" rel="noopener noreferrer">GitHub</a></li>
         </ul>
       </nav>
+
       <a href="https://github.com/hwo63/quickmediadownloader/releases/latest" target="_blank" rel="noopener noreferrer" class="nav-cta">
         Tải v26.0.1
       </a>
@@ -77,8 +93,8 @@
               <span class="dot dot-green"></span>
             </div>
             <div class="address-pill">
-              <span class="lock-icon" aria-hidden="true">🔒</span>
-              <span>quickmediadownloader.hwo.workers.dev</span>
+              <span aria-hidden="true">🔒</span>
+              <span class="address-text">quickmediadownloader.hwo.workers.dev</span>
             </div>
             <div class="toolbar-badge">
               <img src="assets/icon-32.png" alt="" width="16" height="16">
@@ -87,7 +103,7 @@
           </div>
 
           <div class="showcase-stage">
-            <p class="stage-hint">Rê chuột (hoặc chạm) vào thẻ Ảnh và Video bên dưới để xem nút kính mờ xuất hiện và bấm thử:</p>
+            <p class="stage-hint">Rê chuột (hoặc chạm trên di động) vào thẻ Ảnh và Video bên dưới để thử nút kính mờ:</p>
             <div class="demo-grid">
               <!-- Image Demo Card -->
               <article class="demo-card demo-image-card" tabindex="0">
@@ -106,7 +122,7 @@
                 </div>
                 <div class="demo-meta">
                   <h3>Nhãn Ảnh Xanh Dương</h3>
-                  <p>Hiển thị chính xác kích thước thực tế, ưu tiên trích xuất bản gốc từ <code>srcset</code>, <code>data-original</code> và <code>name=orig</code>.</p>
+                  <p>Hiển thị kích thước thực tế, tự ưu tiên trích xuất bản gốc từ <code>srcset</code>, <code>data-original</code> và <code>name=orig</code>.</p>
                 </div>
               </article>
 
@@ -144,7 +160,7 @@
                 </div>
                 <div class="demo-meta">
                   <h3>Nhãn Video Xanh Lá</h3>
-                  <p>Lấy link MP4 khi bạn rê chuột vào trình phát — vượt lớp phủ điều khiển và tránh thông báo chờ bấm lại.</p>
+                  <p>Lấy link MP4 ngay lúc bạn rê chuột vào trình phát — vượt lớp phủ điều khiển và tải trực tiếp không chờ đợi.</p>
                 </div>
               </article>
             </div>
@@ -165,7 +181,7 @@
       </div>
 
       <div class="bento-grid">
-        <article class="bento-card bento-wide reveal-item">
+        <article class="bento-card bento-span-2 reveal-item">
           <div class="bento-badge">Hiệu năng thông minh</div>
           <h3>Chỉ lấy link tải khi bạn hover.</h3>
           <p>Không quét trước hàng trăm đường dẫn gây nặng trang web. Ngay khoảnh khắc con trỏ chạm vào ảnh hoặc video, QuickMedia mới trích xuất liên kết gốc để sẵn sàng tải ngay khi bạn bấm.</p>
@@ -189,10 +205,25 @@
           <p>Nhận diện thẻ <code>&lt;video&gt;</code> ngay cả dưới lớp điều khiển của Video.js, Plyr, JWPlayer và tự ẩn khi bị popup che khuất.</p>
         </article>
 
-        <article class="bento-card bento-wide reveal-item">
-          <div class="bento-badge">Quyền riêng tư</div>
-          <h3>100% cục bộ. Không theo dõi.</h3>
-          <p>Không máy chủ trung gian, không phân tích hành vi. Tiện ích chỉ sử dụng đúng 3 quyền cần thiết của trình duyệt: <code>downloads</code>, <code>storage</code> và <code>contextMenus</code>.</p>
+        <article class="bento-card reveal-item">
+          <div class="bento-badge">Tùy biến linh hoạt</div>
+          <h3>Menu chuột phải &amp; Popup.</h3>
+          <p>Chọn 4 góc hiển thị, lọc kích thước icon nhỏ (80px–250px), hỏi nơi lưu file và theo dõi thống kê lượt tải nhanh chóng.</p>
+        </article>
+
+        <article class="bento-card bento-span-full reveal-item">
+          <div class="bento-featured-layout">
+            <div>
+              <div class="bento-badge">Quyền riêng tư tuyệt đối</div>
+              <h3>100% cục bộ. Không theo dõi.</h3>
+              <p>Không máy chủ trung gian, không phân tích hành vi. Tiện ích chỉ sử dụng đúng 3 quyền tối thiểu của trình duyệt để lưu tệp trực tiếp về máy bạn.</p>
+            </div>
+            <ul class="permission-pills" aria-label="Các quyền trình duyệt tối thiểu">
+              <li><code>downloads</code></li>
+              <li><code>storage</code></li>
+              <li><code>contextMenus</code></li>
+            </ul>
+          </div>
         </article>
       </div>
     </section>
@@ -266,11 +297,14 @@
               <h3>Build và đóng gói từ mã nguồn mở</h3>
               <p class="panel-desc">Yêu cầu <code>zsh</code>, <code>python3</code> và <code>zip</code> trên macOS hoặc Linux:</p>
               <div class="code-box">
+                <div class="code-box-header">
+                  <span class="code-lang">zsh</span>
+                  <button type="button" id="copy-build-btn" class="copy-btn">Sao chép lệnh</button>
+                </div>
                 <pre role="region" aria-label="Lệnh clone và build extension" tabindex="0"><code id="build-commands">git clone https://github.com/hwo63/quickmediadownloader.git
 cd quickmediadownloader
 chmod +x scripts/build-release.sh
 ./scripts/build-release.sh</code></pre>
-                <button type="button" id="copy-build-btn" class="copy-btn">Sao chép lệnh</button>
               </div>
               <p class="panel-note">Sau khi chạy xong, thư mục nạp trực tiếp nằm tại <code>dist/QuickMediaDownloader/</code> và gói nén sẵn sàng chia sẻ nằm trong <code>releases/</code>.</p>
             </div>
